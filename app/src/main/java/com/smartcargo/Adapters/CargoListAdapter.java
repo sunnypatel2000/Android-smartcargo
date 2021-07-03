@@ -1,32 +1,35 @@
-package com.smartcargo;
+package com.smartcargo.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.smartcargo.Database.Cargo;
-import com.smartcargo.Database.Load;
+import com.smartcargo.MajorViews.Details;
+import com.smartcargo.R;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import static com.smartcargo.MainActivity.ID;
+import static com.smartcargo.MainActivity.TYPECAGRO;
+import static com.smartcargo.MainActivity.TYPEKEY;
 import static com.smartcargo.MainActivity.l;
 
 public class CargoListAdapter extends RecyclerView.Adapter<CargoListAdapter.CargoListAdapterVH> {
 
     private List<Cargo> cargoList = new ArrayList<>();
+    Context context;
 
-    public CargoListAdapter(List<Cargo> cargoList){
+    public CargoListAdapter(Context context, List<Cargo> cargoList){
+        this.context = context;
         if(cargoList != null)
             this.cargoList = cargoList;
     }
@@ -42,14 +45,18 @@ public class CargoListAdapter extends RecyclerView.Adapter<CargoListAdapter.Carg
     @Override
     public void onBindViewHolder(@NonNull CargoListAdapter.CargoListAdapterVH holder, int position) {
         Cargo record = this.cargoList.get(position);
-        holder.material.setText(record.materialType);
-        holder.weight.setText(String.valueOf(record.weight));
-        holder.truckType.setText(record.truckType);
-        holder.truckReq.setText(String.valueOf(record.trucksRequired));
-        holder.loadValue.setText(String.valueOf(record.loadValue));
-        holder.loadingDate.setText(record.date);
-        holder.pickupLoc.setText(record.pickupLocation);
-        holder.dropLoc.setText(record.dropLocation);
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent i = new Intent(this.context, Details.class);
+            i.putExtra(TYPEKEY, TYPECAGRO);
+            i.putExtra(ID, position);
+            context.startActivity(i);
+        });
+
+        holder.material.setText("Material Type: " + record.materialType);
+        holder.loadingDate.setText("Date: " + record.date);
+        holder.pickupLoc.setText("Pickup Location: " + record.pickupLocation);
+        holder.dropLoc.setText("Drop Location: " + record.dropLocation);
     }
 
     public void setList(List<Cargo> list){
@@ -70,13 +77,9 @@ public class CargoListAdapter extends RecyclerView.Adapter<CargoListAdapter.Carg
         public CargoListAdapterVH(@NonNull View itemView) {
             super(itemView);
             material = itemView.findViewById(R.id.material);
-            weight = itemView.findViewById(R.id.weight);
-            truckType = itemView.findViewById(R.id.truckType);
-            truckReq = itemView.findViewById(R.id.truckReq);
-            loadValue = itemView.findViewById(R.id.loadValue);
-            loadingDate = itemView.findViewById(R.id.loadingDate);
             pickupLoc = itemView.findViewById(R.id.pickupLoc);
             dropLoc = itemView.findViewById(R.id.dropLoc);
+            loadingDate = itemView.findViewById(R.id.loadingDateEt);
         }
     }
 

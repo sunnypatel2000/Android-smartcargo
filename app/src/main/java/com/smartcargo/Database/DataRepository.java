@@ -3,6 +3,7 @@ package com.smartcargo.Database;
 import android.content.Context;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Query;
 
 import java.util.List;
 
@@ -25,6 +26,14 @@ public class DataRepository {
 
     public LiveData<List<Load>> getLoadList(){
         return LoadList;
+    }
+
+    public Cargo getCargo(int id){
+        return dao.getCargo(id);
+    }
+
+    public Load getLoad(int id){
+        return dao.getLoad(id);
     }
 
 //    Insertion operations

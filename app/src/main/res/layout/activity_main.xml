@@ -14,55 +14,51 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/cargoBt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewOrder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add"
+        android:contentDescription="Launch Add new Activity"
         android:onClick="addNewOrder"
-        android:contentDescription="Launch Add new Activity" />
+        app:layout_constraintBottom_toBottomOf="@+id/cargoBt"
+        app:layout_constraintEnd_toStartOf="@+id/loadBt"
+        app:layout_constraintStart_toEndOf="@+id/cargoBt"
+        app:layout_constraintTop_toTopOf="@+id/cargoBt"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
     <TextView
         android:id="@+id/cargoBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/white"
         android:onClick="showCargoList"
         android:text="CargoList"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/loadBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/white"
         android:onClick="showLoadList"
         android:text="LoadList"
-        android:textSize="20sp"
-        android:background="@color/white"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/cargoBt"
-        app:layout_constraintEnd_toStartOf="@+id/addNewOrder"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cargoBt"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cargoBt"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

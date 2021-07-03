@@ -1,4 +1,4 @@
-package com.smartcargo;
+package com.smartcargo.Fragments;
 
 import android.os.Bundle;
 
@@ -13,10 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.smartcargo.Database.Cargo;
 import com.smartcargo.Database.Load;
+import com.smartcargo.R;
 
-import static com.smartcargo.AddNewOrder.vm;
+import static com.smartcargo.MajorViews.AddNewOrder.vm;
 
 public class addLoad extends Fragment {
 

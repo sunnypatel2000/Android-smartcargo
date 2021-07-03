@@ -1,5 +1,7 @@
-package com.smartcargo;
+package com.smartcargo.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +11,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.smartcargo.Database.Load;
+import com.smartcargo.MajorViews.Details;
+import com.smartcargo.R;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.smartcargo.MainActivity.ID;
+import static com.smartcargo.MainActivity.TYPECAGRO;
+import static com.smartcargo.MainActivity.TYPEKEY;
+import static com.smartcargo.MainActivity.TYPELOAD;
 import static com.smartcargo.MainActivity.l;
 
 public class LoadListAdapter extends RecyclerView.Adapter<LoadListAdapter.LoadListAdapterVH> {
 
+    private final Context context;
     private List<Load> loadList = new ArrayList<>();
 
-    public LoadListAdapter(List<Load> loadList){
+    public LoadListAdapter(Context context, List<Load> loadList){
+        this.context = context;
         if(loadList != null)
             this.loadList = loadList;
     }
@@ -36,12 +45,18 @@ public class LoadListAdapter extends RecyclerView.Adapter<LoadListAdapter.LoadLi
     @Override
     public void onBindViewHolder(@NonNull LoadListAdapter.LoadListAdapterVH holder, int position) {
         Load record = this.loadList.get(position);
-        holder.truckTypeLoad.setText(record.truckType);
-        holder.pickupLocation.setText(record.pickupLocation);
-        holder.expPrice.setText(String.valueOf(record.expectedPrice));
-        holder.loadingDateLoad.setText(record.loadingDate);
-        holder.dropLocation.setText(record.dropLocation);
-        holder.comments.setText(record.comments);
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent i = new Intent(this.context, Details.class);
+            i.putExtra(TYPEKEY, TYPELOAD);
+            i.putExtra(ID, position);
+            context.startActivity(i);
+        });
+
+        holder.pickupLocation.setText("Pickup Loaction" + record.pickupLocation);
+        holder.expPrice.setText("Expected Price: " + record.expectedPrice);
+        holder.dropLocation.setText("Drop Location: " + record.dropLocation);
+        holder.comments.setText("Comments " + record.comments);
     }
 
     public void setList(List<Load> list){

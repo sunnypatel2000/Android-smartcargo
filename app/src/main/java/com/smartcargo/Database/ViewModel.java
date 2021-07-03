@@ -1,4 +1,4 @@
-package com.smartcargo;
+package com.smartcargo.Database;
 
 import android.app.Application;
 
@@ -22,7 +22,7 @@ public class ViewModel extends AndroidViewModel {
         repository = new DataRepository(application);
     }
 
-//    Insertion operation
+//    Raw operation
 
     public LiveData<List<Cargo>> getCargoList(){
         return repository.getCargoList();
@@ -30,6 +30,14 @@ public class ViewModel extends AndroidViewModel {
 
     public LiveData<List<Load>> getLoadList(){
         return repository.getLoadList();
+    }
+
+    public Cargo getCargo(int id){
+        return repository.getCargo(id);
+    }
+
+    public Load getLoad(int id){
+        return repository.getLoad(id);
     }
 
     //    Insertion operations

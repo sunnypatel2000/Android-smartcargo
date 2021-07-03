@@ -19,7 +19,13 @@ public interface AppDao {
     @Query("SELECT * FROM Load")
     LiveData<List<Load>> getAllLoad();
 
-//    Insertion operations
+    @Query("SELECT * FROM Cargo where id = :id")
+    Cargo getCargo(int id);
+
+    @Query("SELECT * FROM Load where id = :id")
+    Load getLoad(int id);
+
+    //Insertion operations
     @Insert
     void AddLoad(Load details);
 

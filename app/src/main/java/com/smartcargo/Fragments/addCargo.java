@@ -1,4 +1,4 @@
-package com.smartcargo;
+package com.smartcargo.Fragments;
 
 import android.os.Bundle;
 
@@ -14,8 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.smartcargo.Database.Cargo;
+import com.smartcargo.R;
 
-import static com.smartcargo.AddNewOrder.vm;
+import static com.smartcargo.MajorViews.AddNewOrder.vm;
 
 public class addCargo extends Fragment {
 
@@ -38,10 +39,10 @@ public class addCargo extends Fragment {
     private void init(View itemView){
         material = itemView.findViewById(R.id.material);
         weight = itemView.findViewById(R.id.weight);
-        truckType = itemView.findViewById(R.id.truckType);
+        truckType = itemView.findViewById(R.id.loadingDateEt);
         truckReq = itemView.findViewById(R.id.truckReq);
-        loadValue = itemView.findViewById(R.id.loadValue);
-        loadingDate = itemView.findViewById(R.id.loadingDate);
+        loadValue = itemView.findViewById(R.id.pickupLoc);
+        loadingDate = itemView.findViewById(R.id.loadingDateEt);
         pickupLoc = itemView.findViewById(R.id.pickupLoc);
         dropLoc = itemView.findViewById(R.id.dropLoc);
         b = itemView.findViewById(R.id.okc);

@@ -3,54 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    tools:context=".MajorViews.RegisterUser">
 
-    <TextView
-        android:id="@+id/material"
+    <EditText
+        android:id="@+id/emailId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:text="TextView"
-        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Enter Email Id"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/loadingDateEt"
+    <EditText
+        android:id="@+id/pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:text="TextView"
-        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/material" />
+        app:layout_constraintTop_toBottomOf="@+id/emailId" />
 
-    <TextView
-        android:id="@+id/pickupLoc"
+    <EditText
+        android:id="@+id/confPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:text="TextView"
-        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loadingDateEt" />
+        app:layout_constraintTop_toBottomOf="@+id/pass" />
 
-
-    <TextView
-        android:id="@+id/dropLoc"
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
-        android:text="TextView"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="70dp"
+        android:text="Button"
+        android:onClick="registerUser"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pickupLoc" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/confPass" />
 </androidx.constraintlayout.widget.ConstraintLayout>

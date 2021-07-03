@@ -1,12 +1,16 @@
-package com.smartcargo;
+package com.smartcargo.MajorViews;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.smartcargo.Database.ViewModel;
+import com.smartcargo.Fragments.addCargo;
+import com.smartcargo.Fragments.addLoad;
+import com.smartcargo.R;
 
 public class AddNewOrder extends AppCompatActivity {
 
@@ -23,6 +27,7 @@ public class AddNewOrder extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.fragmentPH, new addCargo(), "AddCargo").commit();
         vm = new ViewModelProvider(this).get(ViewModel.class);
+        setTitle("Add new Cargo");
     }
 
 
@@ -31,6 +36,7 @@ public class AddNewOrder extends AppCompatActivity {
             isCargo = false;
             cargo.setTextSize(20);
             load.setTextSize(25);
+            setTitle("Add new Load");
             cargo.setTextColor(getResources().getColor(R.color.black));
             load.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
             getSupportFragmentManager().beginTransaction()
@@ -43,6 +49,7 @@ public class AddNewOrder extends AppCompatActivity {
             isCargo = true;
             cargo.setTextSize(25);
             load.setTextSize(20);
+            setTitle("Add new Cargo");
             load.setTextColor(getResources().getColor(R.color.black));
             cargo.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
             getSupportFragmentManager().beginTransaction()
