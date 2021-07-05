@@ -17,11 +17,10 @@ import com.smartcargo.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.smartcargo.MainActivity.ID;
-import static com.smartcargo.MainActivity.TYPECAGRO;
-import static com.smartcargo.MainActivity.TYPEKEY;
-import static com.smartcargo.MainActivity.TYPELOAD;
-import static com.smartcargo.MainActivity.l;
+import static com.smartcargo.MajorViews.MainActivity.ID;
+import static com.smartcargo.MajorViews.MainActivity.TYPEKEY;
+import static com.smartcargo.MajorViews.MainActivity.TYPELOAD;
+import static com.smartcargo.MajorViews.MainActivity.l;
 
 public class LoadListAdapter extends RecyclerView.Adapter<LoadListAdapter.LoadListAdapterVH> {
 

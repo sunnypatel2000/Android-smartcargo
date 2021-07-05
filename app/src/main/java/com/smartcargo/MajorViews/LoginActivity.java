@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.smartcargo.MainActivity;
 import com.smartcargo.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -48,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void start(){
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, HomePage.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
     }

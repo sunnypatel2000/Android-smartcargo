@@ -1,4 +1,4 @@
-package com.smartcargo;
+package com.smartcargo.MajorViews;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +23,7 @@ import com.smartcargo.Database.ViewModel;
 import com.smartcargo.MajorViews.AddNewOrder;
 import com.smartcargo.MajorViews.LoginActivity;
 import com.smartcargo.MajorViews.RegisterUser;
+import com.smartcargo.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,29 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.mainMenuLogout){
-            FirebaseAuth.getInstance().signOut();
-            Intent i = new Intent(this, LoginActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
-            return true;
-        }else if(item.getItemId() == R.id.registerUserMenu){
-            Intent i = new Intent(this, RegisterUser.class);
-            startActivity(i);
-            return true;
-        }
-
-        return false;
-    }
-
     public static void l(String msg){
         Log.i("tag", msg);
     }
@@ -116,9 +94,6 @@ public class MainActivity extends AppCompatActivity {
             load.setTextColor(getResources().getColor(R.color.black));
             cargo.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
         }
-    }
 
-    public void addNewOrder(View view) {
-        startActivity(new Intent(this, AddNewOrder.class));
     }
 }

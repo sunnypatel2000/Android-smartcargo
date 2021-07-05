@@ -12,6 +12,11 @@ import com.smartcargo.Fragments.addCargo;
 import com.smartcargo.Fragments.addLoad;
 import com.smartcargo.R;
 
+import static com.smartcargo.MajorViews.MainActivity.TYPECAGRO;
+import static com.smartcargo.MajorViews.MainActivity.TYPEKEY;
+import static com.smartcargo.MajorViews.MainActivity.TYPELOAD;
+import static com.smartcargo.MajorViews.MainActivity.l;
+
 public class AddNewOrder extends AppCompatActivity {
 
     Boolean isCargo = true;
@@ -24,8 +29,27 @@ public class AddNewOrder extends AppCompatActivity {
         setContentView(R.layout.activity_add_order);
         cargo = findViewById(R.id.addCargo);
         load = findViewById(R.id.addLoad);
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentPH, new addCargo(), "AddCargo").commit();
+        l(getIntent().getStringExtra(TYPEKEY));
+        if (getIntent().getStringExtra(TYPEKEY).equals(TYPECAGRO)) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragmentPH, new addCargo(), "AddCargo").commit();
+            isCargo = true;
+            cargo.setTextSize(25);
+            load.setTextSize(20);
+            setTitle("Add new Cargo");
+            load.setTextColor(getResources().getColor(R.color.black));
+            cargo.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+        }
+        else if (getIntent().getStringExtra(TYPEKEY).equals(TYPELOAD)) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragmentPH, new addLoad(), "AddLoad").commit();
+            isCargo = false;
+            cargo.setTextSize(20);
+            load.setTextSize(25);
+            setTitle("Add new Load");
+            cargo.setTextColor(getResources().getColor(R.color.black));
+            load.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+        }
         vm = new ViewModelProvider(this).get(ViewModel.class);
         setTitle("Add new Cargo");
     }
@@ -56,4 +80,5 @@ public class AddNewOrder extends AppCompatActivity {
                     .replace(R.id.fragmentPH, new addCargo(), "AddCargo").commit();
         }
     }
+
 }

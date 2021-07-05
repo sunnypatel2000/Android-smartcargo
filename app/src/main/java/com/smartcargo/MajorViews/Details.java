@@ -12,12 +12,11 @@ import com.smartcargo.Database.Load;
 import com.smartcargo.Database.ViewModel;
 import com.smartcargo.R;
 
-import static com.smartcargo.MainActivity.ID;
-import static com.smartcargo.MainActivity.TYPECAGRO;
-import static com.smartcargo.MainActivity.TYPEKEY;
-import static com.smartcargo.MainActivity.TYPELOAD;
-import static com.smartcargo.MainActivity.l;
-import static com.smartcargo.MajorViews.AddNewOrder.vm;
+import static com.smartcargo.MajorViews.MainActivity.ID;
+import static com.smartcargo.MajorViews.MainActivity.TYPECAGRO;
+import static com.smartcargo.MajorViews.MainActivity.TYPEKEY;
+import static com.smartcargo.MajorViews.MainActivity.TYPELOAD;
+import static com.smartcargo.MajorViews.MainActivity.l;
 
 public class Details extends AppCompatActivity {
 
