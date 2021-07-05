@@ -55,4 +55,9 @@ public class LoginActivity extends AppCompatActivity {
     public void forgetPassword(View view) {
         auth.sendPasswordResetEmail(userId.getText().toString().trim());
     }
+
+    public void Register(View view) {
+        Intent i = new Intent(this, RegisterUser.class);
+        startActivity(i);
+    }
 }

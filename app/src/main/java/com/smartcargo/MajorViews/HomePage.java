@@ -54,10 +54,6 @@ public class HomePage extends AppCompatActivity {
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
             return true;
-        }else if(item.getItemId() == R.id.registerUserMenu){
-            Intent i = new Intent(this, RegisterUser.class);
-            startActivity(i);
-            return true;
         }
 
         return false;

@@ -11,28 +11,28 @@
         android:layout_height="match_parent"
         tools:conhint=".addCargo">
 
-        <EditText
+        <Spinner
             android:id="@+id/material"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="32dp"
             android:hint="Material Type"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:hint="Weight(tons)"
             android:inputType="numberDecimal"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/loadValue" />
 
         <EditText
             android:id="@+id/truckType"
@@ -49,7 +49,7 @@
             android:id="@+id/truckReq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:hint="Trucks Required"
             android:inputType="numberDecimal"
@@ -78,13 +78,13 @@
             android:hint="Loading Date"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/truckReq" />
+            app:layout_constraintTop_toBottomOf="@+id/truckType" />
 
         <EditText
             android:id="@+id/pickupLoc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:hint="Pickup Location"
             android:textSize="20sp"
@@ -95,12 +95,12 @@
             android:id="@+id/dropLoc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:hint="Drop Location"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loadingDateEt" />
+            app:layout_constraintTop_toBottomOf="@+id/pickupLoc" />
 
         <Button
             android:id="@+id/okc"
@@ -112,6 +112,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dropLoc" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="Select Material"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

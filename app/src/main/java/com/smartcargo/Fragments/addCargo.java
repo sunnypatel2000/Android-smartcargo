@@ -9,8 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.smartcargo.Database.Cargo;
@@ -20,7 +23,9 @@ import static com.smartcargo.MajorViews.AddNewOrder.vm;
 
 public class addCargo extends Fragment {
 
-    EditText material,weight,truckType,truckReq,loadValue,loadingDate,pickupLoc,dropLoc;
+    EditText weight,truckType,truckReq,loadValue,loadingDate,pickupLoc,dropLoc;
+    Spinner material;
+    String selectedOption;
     Button b;
 
     @Override
@@ -47,20 +52,51 @@ public class addCargo extends Fragment {
         dropLoc = itemView.findViewById(R.id.dropLoc);
         b = itemView.findViewById(R.id.okc);
 
+        String[] options = new String[]{"Material 1", "Material 2", "Material 13", "Material 14", "Material 15"};
+        selectedOption = options[0];
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
+                android.R.layout.simple_spinner_item, options);
+
+        material.setAdapter(adapter);
+
+        material.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedOption = options[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         b.setOnClickListener(view -> {
-            Cargo cargo = new Cargo(
-                    material.getText().toString().trim(),
-                    truckType.getText().toString().trim(),
-                    Integer.parseInt(loadValue.getText().toString().trim()),
-                    pickupLoc.getText().toString().trim(),
-                    Integer.parseInt(weight.getText().toString().trim()),
-                    Integer.parseInt(truckReq.getText().toString().trim()),
-                    loadingDate.getText().toString().trim(),
-                    dropLoc.getText().toString().trim()
-            );
-            vm.AddCargo(cargo);
-            Toast.makeText(requireContext(), "Added New Cargo", Toast.LENGTH_SHORT).show();
-            requireActivity().finish();
+
+            if(!selectedOption.isEmpty() &&
+                !truckType.getText().toString().trim().isEmpty() &&
+                !loadValue.getText().toString().trim().isEmpty() &&
+                !pickupLoc.getText().toString().trim().isEmpty() &&
+                !weight.getText().toString().trim().isEmpty() &&
+                !truckReq.getText().toString().trim().isEmpty() &&
+                !loadingDate.getText().toString().trim().isEmpty() &&
+                !dropLoc.getText().toString().trim().isEmpty()) {
+
+                Cargo cargo = new Cargo(
+                        selectedOption,
+                        truckType.getText().toString().trim(),
+                        Integer.parseInt(loadValue.getText().toString().trim()),
+                        pickupLoc.getText().toString().trim(),
+                        Integer.parseInt(weight.getText().toString().trim()),
+                        Integer.parseInt(truckReq.getText().toString().trim()),
+                        loadingDate.getText().toString().trim(),
+                        dropLoc.getText().toString().trim()
+                );
+                vm.AddCargo(cargo);
+                Toast.makeText(requireContext(), "Added New Cargo", Toast.LENGTH_SHORT).show();
+                requireActivity().finish();
+            }else
+                Toast.makeText(requireContext(), "Please fill every fields", Toast.LENGTH_SHORT).show();
         });
     }
 

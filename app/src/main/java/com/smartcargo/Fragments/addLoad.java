@@ -46,19 +46,30 @@ public class addLoad extends Fragment {
 
         b = itemView.findViewById(R.id.okl);
 
-        b.setOnClickListener(view -> {
-            Load load = new Load(
-                    truckTypeLoad.getText().toString().trim(),
-                    pickupLocation.getText().toString().trim(),
-                    Integer.parseInt(expPrice.getText().toString().trim()),
-                    loadingDateLoad.getText().toString().trim(),
-                    dropLocation.getText().toString().trim(),
-                    comments.getText().toString().trim()
-            );
-            vm.AddLoad(load);
-            Toast.makeText(requireContext(), "Added New Load", Toast.LENGTH_SHORT).show();
-            requireActivity().finish();
-        });
+        if(
+            !truckTypeLoad.getText().toString().trim().isEmpty() &&
+            !pickupLocation.getText().toString().trim().isEmpty() &&
+            !expPrice.getText().toString().trim().isEmpty() &&
+            !loadingDateLoad.getText().toString().trim().isEmpty() &&
+            !dropLocation.getText().toString().trim().isEmpty() &&
+            !comments.getText().toString().trim().isEmpty()
+        ) {
+
+            b.setOnClickListener(view -> {
+                Load load = new Load(
+                        truckTypeLoad.getText().toString().trim(),
+                        pickupLocation.getText().toString().trim(),
+                        Integer.parseInt(expPrice.getText().toString().trim()),
+                        loadingDateLoad.getText().toString().trim(),
+                        dropLocation.getText().toString().trim(),
+                        comments.getText().toString().trim()
+                );
+                vm.AddLoad(load);
+                Toast.makeText(requireContext(), "Added New Load", Toast.LENGTH_SHORT).show();
+                requireActivity().finish();
+            });
+        }else
+            Toast.makeText(requireContext(), "Please fill every fields", Toast.LENGTH_SHORT).show();
     }
 
 }

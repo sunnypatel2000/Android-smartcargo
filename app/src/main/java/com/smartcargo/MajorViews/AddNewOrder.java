@@ -19,8 +19,7 @@ import static com.smartcargo.MajorViews.MainActivity.l;
 
 public class AddNewOrder extends AppCompatActivity {
 
-    Boolean isCargo = true;
-    TextView cargo, load;
+    TextView cargo;
     public static ViewModel vm;
 
     @Override
@@ -28,57 +27,48 @@ public class AddNewOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_order);
         cargo = findViewById(R.id.addCargo);
-        load = findViewById(R.id.addLoad);
+//        load = findViewById(R.id.addLoad);
         l(getIntent().getStringExtra(TYPEKEY));
         if (getIntent().getStringExtra(TYPEKEY).equals(TYPECAGRO)) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragmentPH, new addCargo(), "AddCargo").commit();
-            isCargo = true;
-            cargo.setTextSize(25);
-            load.setTextSize(20);
-            setTitle("Add new Cargo");
-            load.setTextColor(getResources().getColor(R.color.black));
-            cargo.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+            setTitle("Add New Cargo");
+            cargo.setText("Add New Cargo");
         }
         else if (getIntent().getStringExtra(TYPEKEY).equals(TYPELOAD)) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragmentPH, new addLoad(), "AddLoad").commit();
-            isCargo = false;
-            cargo.setTextSize(20);
-            load.setTextSize(25);
-            setTitle("Add new Load");
-            cargo.setTextColor(getResources().getColor(R.color.black));
-            load.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+            cargo.setText("Add New Load");
+            setTitle("Add New Load");
         }
         vm = new ViewModelProvider(this).get(ViewModel.class);
-        setTitle("Add new Cargo");
     }
 
-
-    public void changeToLoad(View view) {
-        if(isCargo){
-            isCargo = false;
-            cargo.setTextSize(20);
-            load.setTextSize(25);
-            setTitle("Add new Load");
-            cargo.setTextColor(getResources().getColor(R.color.black));
-            load.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentPH, new addLoad(), "AddLoad").commit();
-        }
-    }
-
-    public void changeToCargo(View view) {
-        if(!isCargo){
-            isCargo = true;
-            cargo.setTextSize(25);
-            load.setTextSize(20);
-            setTitle("Add new Cargo");
-            load.setTextColor(getResources().getColor(R.color.black));
-            cargo.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentPH, new addCargo(), "AddCargo").commit();
-        }
-    }
+//
+//    public void changeToLoad(View view) {
+//        if(isCargo){
+//            isCargo = false;
+//            cargo.setTextSize(20);
+//            load.setTextSize(25);
+//            setTitle("Add new Load");
+//            cargo.setTextColor(getResources().getColor(R.color.black));
+//            load.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+//            getSupportFragmentManager().beginTransaction()
+//                    .replace(R.id.fragmentPH, new addLoad(), "AddLoad").commit();
+//        }
+//    }
+//
+//    public void changeToCargo(View view) {
+//        if(!isCargo){
+//            isCargo = true;
+//            cargo.setTextSize(25);
+//            load.setTextSize(20);
+//            setTitle("Add new Cargo");
+//            load.setTextColor(getResources().getColor(R.color.black));
+//            cargo.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+//            getSupportFragmentManager().beginTransaction()
+//                    .replace(R.id.fragmentPH, new addCargo(), "AddCargo").commit();
+//        }
+//    }
 
 }

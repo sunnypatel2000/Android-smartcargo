@@ -47,18 +47,18 @@
             android:id="@+id/loadingDateLoad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:hint="Loading Date"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/expPrice" />
 
         <EditText
             android:id="@+id/dropLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:hint="Drop Location"
             android:textSize="20sp"
@@ -69,11 +69,10 @@
             android:id="@+id/comments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:hint="Comments"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/expPrice"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dropLocation" />
 
@@ -85,6 +84,6 @@
             android:text="Add Load"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/expPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/comments" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
