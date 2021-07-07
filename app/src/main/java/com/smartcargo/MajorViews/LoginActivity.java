@@ -6,10 +6,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.smartcargo.R;
+
+import org.jetbrains.annotations.NotNull;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -53,7 +58,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void forgetPassword(View view) {
-        auth.sendPasswordResetEmail(userId.getText().toString().trim());
+        auth.sendPasswordResetEmail("sunny.patel200038@gmail.com").addOnCompleteListener(task -> {
+            if(task.isSuccessful())
+                Toast.makeText(this, "Sent reset password link on your email address", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(this, "Error Sending Reset password link", Toast.LENGTH_SHORT).show();
+        });
     }
 
     public void Register(View view) {
