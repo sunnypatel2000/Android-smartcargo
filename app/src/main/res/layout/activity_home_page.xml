@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MajorViews.HomePage">
+    tools:context=".MajorViews.HomePage"
+    android:background="@drawable/bg_img"
+    >
 
     <Button
         android:id="@+id/AddLoadBt"
@@ -12,6 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Add New Load"
+        android:width="150dp"
+        android:background="@drawable/round_btn"
+        android:textColor="#fff"
         android:onClick="addNewLoad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +28,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Show List"
+        android:width="150dp"
         android:onClick="showList"
+        android:background="@drawable/round_btn"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddLoadBt" />
@@ -34,7 +42,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:text="Add New Cargo"
+        android:width="150dp"
         android:onClick="addNewCargo"
+        android:background="@drawable/round_btn"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
