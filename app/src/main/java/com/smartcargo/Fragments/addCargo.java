@@ -23,9 +23,9 @@ import static com.smartcargo.MajorViews.AddNewOrder.vm;
 
 public class addCargo extends Fragment {
 
-    EditText weight,truckType,truckReq,loadValue,loadingDate,pickupLoc,dropLoc;
-    Spinner material;
-    String selectedOption;
+    EditText weight,truckReq,loadValue,loadingDate,pickupLoc,dropLoc;
+    Spinner material, truckType;
+    String selectedOption, selectedOptionType;
     Button b;
 
     @Override
@@ -44,20 +44,28 @@ public class addCargo extends Fragment {
     private void init(View itemView){
         material = itemView.findViewById(R.id.material);
         weight = itemView.findViewById(R.id.weight);
-        truckType = itemView.findViewById(R.id.loadingDateEt);
+        truckType = itemView.findViewById(R.id.truckType);
         truckReq = itemView.findViewById(R.id.truckReq);
-        loadValue = itemView.findViewById(R.id.pickupLoc);
+        loadValue = itemView.findViewById(R.id.loadValue);
         loadingDate = itemView.findViewById(R.id.loadingDateEt);
         pickupLoc = itemView.findViewById(R.id.pickupLoc);
         dropLoc = itemView.findViewById(R.id.dropLoc);
         b = itemView.findViewById(R.id.okc);
 
-        String[] options = new String[]{"Material 1", "Material 2", "Material 13", "Material 14", "Material 15"};
+        String[] options = new String[]{"Alcohol & Spirits", "Automobile Component",
+                "Building Materials", "Fruits & Vegetables", "Dairy Products"};
         selectedOption = options[0];
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
                 android.R.layout.simple_spinner_item, options);
 
+        String[] optionType = new String[]{"LCV Open Body TATA", "Open Body Taurus",
+                "Trailer", "Container", "less 750 kg"};
+        selectedOptionType = optionType[0];
+        ArrayAdapter<String> adapterType = new ArrayAdapter<>(requireContext(),
+                android.R.layout.simple_spinner_item, optionType);
+
         material.setAdapter(adapter);
+        truckType.setAdapter(adapterType);
 
         material.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -71,10 +79,22 @@ public class addCargo extends Fragment {
             }
         });
 
+        truckType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedOptionType = optionType[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         b.setOnClickListener(view -> {
 
             if(!selectedOption.isEmpty() &&
-                !truckType.getText().toString().trim().isEmpty() &&
+                !selectedOptionType.trim().isEmpty() &&
                 !loadValue.getText().toString().trim().isEmpty() &&
                 !pickupLoc.getText().toString().trim().isEmpty() &&
                 !weight.getText().toString().trim().isEmpty() &&
@@ -84,7 +104,7 @@ public class addCargo extends Fragment {
 
                 Cargo cargo = new Cargo(
                         selectedOption,
-                        truckType.getText().toString().trim(),
+                        selectedOptionType.trim(),
                         Integer.parseInt(loadValue.getText().toString().trim()),
                         pickupLoc.getText().toString().trim(),
                         Integer.parseInt(weight.getText().toString().trim()),
@@ -93,7 +113,7 @@ public class addCargo extends Fragment {
                         dropLoc.getText().toString().trim()
                 );
                 vm.AddCargo(cargo);
-                Toast.makeText(requireContext(), "Added New Cargo", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Successful Added Cargo", Toast.LENGTH_SHORT).show();
                 requireActivity().finish();
             }else
                 Toast.makeText(requireContext(), "Please fill every fields", Toast.LENGTH_SHORT).show();

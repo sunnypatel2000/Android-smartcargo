@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             isCargo = false;
             setTitle("Smart Cargo | Load List");
             cargo.setTextColor(getResources().getColor(R.color.black));
-            load.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+            load.setTextColor(getResources().getColor(R.color.orangeC));
         }
 
     }
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             isCargo = true;
             setTitle("Smart Cargo | Cargo List");
             load.setTextColor(getResources().getColor(R.color.black));
-            cargo.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+            cargo.setTextColor(getResources().getColor(R.color.orangeC));
         }
 
     }

@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void forgetPassword(View view) {
-        auth.sendPasswordResetEmail("sunny.patel200038@gmail.com").addOnCompleteListener(task -> {
+        auth.sendPasswordResetEmail("sahil.patel200038@gmail.com").addOnCompleteListener(task -> {
             if(task.isSuccessful())
                 Toast.makeText(this, "Sent reset password link on your email address", Toast.LENGTH_SHORT).show();
             else

@@ -26,13 +26,13 @@ abstract class AppDatabase extends RoomDatabase {
                     dbInstance = Room.databaseBuilder(context, AppDatabase.class, "LendersDetailDB")
                             .fallbackToDestructiveMigration()
                             .allowMainThreadQueries()
-                            .addCallback(new RoomDatabase.Callback(){
-                                @Override
-                                public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                                    super.onCreate(db);
-                                    new populateDB(context).execute();
-                                }
-                            })
+//                            .addCallback(new RoomDatabase.Callback(){
+//                                @Override
+//                                public void onCreate(@NonNull SupportSQLiteDatabase db) {
+//                                    super.onCreate(db);
+//                                    new populateDB(context).execute();
+//                                }
+//                            })
                             .build();
                 }
             }

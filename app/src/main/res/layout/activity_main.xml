@@ -43,7 +43,7 @@
         android:onClick="showLoadList"
         android:text="LoadList"
         android:textSize="25sp"
-        android:textColor="#eac37e"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/cargoBt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cargoBt"

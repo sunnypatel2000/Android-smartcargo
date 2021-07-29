@@ -10,28 +10,17 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/truckTypeLoad"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:hint="Type Of Truck"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
             android:id="@+id/pickupLocation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
             android:hint="Pickup Location"
             android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/truckTypeLoad" />
+            app:layout_constraintTop_toBottomOf="@+id/loadTruckType" />
 
         <EditText
             android:id="@+id/expPrice"
@@ -39,12 +28,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
             android:hint="Expected Price"
+            android:inputType="numberDecimal"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pickupLocation"
-            android:inputType="numberDecimal" />
+            app:layout_constraintTop_toBottomOf="@+id/pickupLocation" />
 
         <EditText
             android:id="@+id/loadingDateLoad"
@@ -52,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
             android:hint="Loading Date"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
             android:hint="Drop Location"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,6 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
             android:hint="Comments"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,5 +87,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/comments" />
+
+        <Spinner
+            android:id="@+id/loadTruckType"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.655"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:text="Truck type"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

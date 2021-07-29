@@ -9,8 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.smartcargo.Database.Load;
@@ -20,8 +23,10 @@ import static com.smartcargo.MajorViews.AddNewOrder.vm;
 
 public class addLoad extends Fragment {
 
-    EditText truckTypeLoad, pickupLocation, expPrice, loadingDateLoad, dropLocation, comments;
+    EditText pickupLocation, expPrice, loadingDateLoad, dropLocation, comments;
+    Spinner truckTypeLoad;
     Button b;
+    String selectedOption;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,7 +42,7 @@ public class addLoad extends Fragment {
     }
 
     private void init(View itemView){
-        truckTypeLoad = itemView.findViewById(R.id.truckTypeLoad);
+        truckTypeLoad = itemView.findViewById(R.id.loadTruckType);
         pickupLocation = itemView.findViewById(R.id.pickupLocation);
         expPrice = itemView.findViewById(R.id.expPrice);
         loadingDateLoad = itemView.findViewById(R.id.loadingDateLoad);
@@ -46,18 +51,37 @@ public class addLoad extends Fragment {
 
         b = itemView.findViewById(R.id.okl);
 
-        if(
-            !truckTypeLoad.getText().toString().trim().isEmpty() &&
-            !pickupLocation.getText().toString().trim().isEmpty() &&
-            !expPrice.getText().toString().trim().isEmpty() &&
-            !loadingDateLoad.getText().toString().trim().isEmpty() &&
-            !dropLocation.getText().toString().trim().isEmpty() &&
-            !comments.getText().toString().trim().isEmpty()
-        ) {
+        String[] option = new String[]{"LCV Open Body TATA", "Open Body Taurus",
+                "Trailer", "Container", "less 750 kg"};
+        selectedOption = option[0];
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
+                android.R.layout.simple_spinner_item, option);
 
-            b.setOnClickListener(view -> {
+        truckTypeLoad.setAdapter(adapter);
+
+        truckTypeLoad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedOption = option[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        b.setOnClickListener(view -> {
+            if(
+                !pickupLocation.getText().toString().trim().isEmpty() &&
+                !expPrice.getText().toString().trim().isEmpty() &&
+                !loadingDateLoad.getText().toString().trim().isEmpty() &&
+                !dropLocation.getText().toString().trim().isEmpty() &&
+                !comments.getText().toString().trim().isEmpty()
+            ) {
                 Load load = new Load(
-                        truckTypeLoad.getText().toString().trim(),
+                        selectedOption,
                         pickupLocation.getText().toString().trim(),
                         Integer.parseInt(expPrice.getText().toString().trim()),
                         loadingDateLoad.getText().toString().trim(),
@@ -65,11 +89,12 @@ public class addLoad extends Fragment {
                         comments.getText().toString().trim()
                 );
                 vm.AddLoad(load);
-                Toast.makeText(requireContext(), "Added New Load", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Successful Load", Toast.LENGTH_SHORT).show();
                 requireActivity().finish();
-            });
-        }else
-            Toast.makeText(requireContext(), "Please fill every fields", Toast.LENGTH_SHORT).show();
+            }
+            else
+                Toast.makeText(requireContext(), "Please fill every fields", Toast.LENGTH_SHORT).show();
+        });
     }
 
 }
