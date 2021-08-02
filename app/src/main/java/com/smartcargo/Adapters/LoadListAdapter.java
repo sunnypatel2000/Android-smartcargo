@@ -52,10 +52,10 @@ public class LoadListAdapter extends RecyclerView.Adapter<LoadListAdapter.LoadLi
             context.startActivity(i);
         });
 
-        holder.pickupLocation.setText("Pickup Loaction" + record.pickupLocation);
+        holder.pickupLocation.setText("Pickup Location: " + record.pickupLocation);
         holder.expPrice.setText("Expected Price: " + record.expectedPrice);
         holder.dropLocation.setText("Drop Location: " + record.dropLocation);
-        holder.comments.setText("Comments " + record.comments);
+        holder.comments.setText("Comments : " + record.comments);
     }
 
     public void setList(List<Load> list){

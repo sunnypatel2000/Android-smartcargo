@@ -42,13 +42,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view){
-        auth.signInWithEmailAndPassword(userId.getText().toString().trim(),
-                password.getText().toString().trim()).addOnCompleteListener(task -> {
-            if (task.isSuccessful())
-                start();
-            else
-                Toast.makeText(this, "Sorry incorrect credentials", Toast.LENGTH_SHORT).show();
-        });
+        if(!userId.getText().toString().trim().isEmpty() && !password.getText().toString().trim().isEmpty()) {
+            auth.signInWithEmailAndPassword(userId.getText().toString().trim(),
+                    password.getText().toString().trim()).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    start();
+                    //Logged thai jai tyare
+                    Toast.makeText(this, "You are logged in", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    //khota password mate
+                    Toast.makeText(this, "Sorry incorrect credentials", Toast.LENGTH_SHORT).show();
+            });
+        }else
+            //khali re ena mate
+            Toast.makeText(this, "Please fill Password and Id", Toast.LENGTH_SHORT).show();
     }
 
     private void start(){

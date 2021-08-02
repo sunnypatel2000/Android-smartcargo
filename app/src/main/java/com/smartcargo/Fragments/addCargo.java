@@ -52,13 +52,13 @@ public class addCargo extends Fragment {
         dropLoc = itemView.findViewById(R.id.dropLoc);
         b = itemView.findViewById(R.id.okc);
 
-        String[] options = new String[]{"Alcohol & Spirits", "Automobile Component",
+        String[] options = new String[]{"select materials","Alcohol & Spirits", "Automobile Component",
                 "Building Materials", "Fruits & Vegetables", "Dairy Products"};
         selectedOption = options[0];
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
                 android.R.layout.simple_spinner_item, options);
 
-        String[] optionType = new String[]{"LCV Open Body TATA", "Open Body Taurus",
+        String[] optionType = new String[]{"select type","LCV Open Body TATA", "Open Body Taurus",
                 "Trailer", "Container", "less 750 kg"};
         selectedOptionType = optionType[0];
         ArrayAdapter<String> adapterType = new ArrayAdapter<>(requireContext(),

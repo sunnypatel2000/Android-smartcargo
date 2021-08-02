@@ -50,17 +50,32 @@ abstract class AppDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... v) {
-            String[] name = {"George","Janet","Emma","Eve","Charles","Tracey"};
-            String[] cn = {"1234678923","2345678923","3456678923","4567678923","5678678923","6789678923"};
+            // Cargo Array
+            String[] materials = {};
+            String[] truckTypes = {};
+            int[] loadVals = {};
+            String[] pickupLocs = {};
+            int[] weights = {};
+            int[] truckReqs = {};
+            String[] dates = {};
+            String[] droploc = {};
+
+            //Load Array
+            String[] tts = {};
+            String[] pickLoadLocs = {};
+            int[] expPrices = {};
+            String[] loaddates = {};
+            String[] droplocs = {};
+            String[] comments = {};
             AppDao dao = getInstance(context.get()).dao();
             for(int i = 0; i < 6; i++) {
-                dao.AddCargo(new Cargo("material " + i, "truckType " + i
-                        , i * 12, "Location " + i
-                        , i * 10, i, "12/12/21", "Droplocation " + i));
+                dao.AddCargo(new Cargo(materials[i], truckTypes[i]
+                        ,loadVals[i], pickupLocs[i]
+                        , weights[i], truckReqs[i], dates[i], droploc[i]));
 
-                dao.AddLoad(new Load("truckType " + i, "Location " + i,
-                        i*13, "12/12/21",
-                        "Droplocation " + i, "Comment" + i));
+                dao.AddLoad(new Load(tts[i], pickLoadLocs[i],
+                        expPrices[i],loaddates[i],
+                        droplocs[i], comments[i]));
             }
 
             return null;
