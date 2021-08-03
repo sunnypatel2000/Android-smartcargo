@@ -48,11 +48,11 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     start();
                     //Logged thai jai tyare
-                    Toast.makeText(this, "You are logged in", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "logged in successfully", Toast.LENGTH_SHORT).show();
                 }
                 else
                     //khota password mate
-                    Toast.makeText(this, "Sorry incorrect credentials", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Sorry incorrect Password and Id", Toast.LENGTH_SHORT).show();
             });
         }else
             //khali re ena mate

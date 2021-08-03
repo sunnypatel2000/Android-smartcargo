@@ -51,7 +51,7 @@ public class addLoad extends Fragment {
 
         b = itemView.findViewById(R.id.okl);
 
-        String[] option = new String[]{"LCV Open Body TATA", "Open Body Taurus",
+        String[] option = new String[]{"select type","LCV Open Body TATA", "Open Body Taurus",
                 "Trailer", "Container", "less 750 kg"};
         selectedOption = option[0];
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),

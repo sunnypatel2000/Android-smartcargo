@@ -26,13 +26,13 @@ abstract class AppDatabase extends RoomDatabase {
                     dbInstance = Room.databaseBuilder(context, AppDatabase.class, "LendersDetailDB")
                             .fallbackToDestructiveMigration()
                             .allowMainThreadQueries()
-//                            .addCallback(new RoomDatabase.Callback(){
-//                                @Override
-//                                public void onCreate(@NonNull SupportSQLiteDatabase db) {
-//                                    super.onCreate(db);
-//                                    new populateDB(context).execute();
-//                                }
-//                            })
+                            .addCallback(new RoomDatabase.Callback(){
+                                @Override
+                                public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                                    super.onCreate(db);
+                                    new populateDB(context).execute();
+                                }
+                            })
                             .build();
                 }
             }
@@ -51,22 +51,22 @@ abstract class AppDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... v) {
             // Cargo Array
-            String[] materials = {};
-            String[] truckTypes = {};
-            int[] loadVals = {};
-            String[] pickupLocs = {};
-            int[] weights = {};
-            int[] truckReqs = {};
-            String[] dates = {};
-            String[] droploc = {};
+        String[] materials = {"Alcohol & Spirits", "Automobile Component","Building Materials", "Fruits & Vegetables"};
+            String[] truckTypes = {"LCV Open Body TATA", "Open Body Taurus","Trailer", "Container", "less 750 kg"};
+            int[] loadVals = {25000,20000,40000,10000};
+            String[] pickupLocs = {"ahmedabad","surat","baroda","kokata"};
+            int[] weights = {500,600,800,450};
+            int[] truckReqs = {2,3,5,1};
+            String[] dates = {"01/02/2021","30/06/2020","01/03/2021","21/05/2021"};
+            String[] droploc = {"goa","tamilnadu","mumbai","uatterpradesh"};
 
             //Load Array
-            String[] tts = {};
-            String[] pickLoadLocs = {};
-            int[] expPrices = {};
-            String[] loaddates = {};
-            String[] droplocs = {};
-            String[] comments = {};
+            String[] tts = {"LCV Open Body TATA", "Open Body Taurus","Trailer", "Container", "less 750 kg"};
+            String[] pickLoadLocs = {"ahmedabad","surat","baroda","kokata"};
+            int[] expPrices = {5000,25000,20000,40000};
+            String[] loaddates = {"11/02/2021","05/08/2020","01/04/2021","10/07/2021"};
+            String[] droplocs = {"chennai","tamilnadu","mumbai","uatter pradesh"};
+            String[] comments = {"New Load","New Load","New Load","New Load"};
             AppDao dao = getInstance(context.get()).dao();
             for(int i = 0; i < 6; i++) {
                 dao.AddCargo(new Cargo(materials[i], truckTypes[i]
